@@ -26,7 +26,19 @@
 					password = '".sha1('admin@magazine.comadmin123')."',
 					role = 'Admin',
 					status = 'Active'	
-			"
+			",
+			'category' => "
+			CREATE TABLE IF NOT EXISTS category
+				(
+					id int not null AUTO_INCREMENT PRIMARY KEY,
+					categoryname varchar(30),
+					description text,
+					status enum('Active','Passive') default 'Passive',
+					added_by int,
+					created_date datetime default current_timestamp,
+					updated_date datetime on update current_timestamp
+				)
+		",
 		);
 
 	foreach ($table as $key => $sql) {

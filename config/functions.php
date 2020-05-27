@@ -40,9 +40,10 @@
 			unset($_SESSION['warning']);
 		}
 ?>
+<!-- for the sliding animation of alert -->
 		<script type="text/javascript">
 			setTimeout(function(){
-				$('.alert').slideUp('slow');
+				$('.alert').fadeOut('slow');
 			},3000);
 		</script>
 <?php		

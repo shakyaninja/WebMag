@@ -1,1 +1,8 @@
 
+May 27, 2020 04:12:03 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 27, 2020 04:13:34 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 27, 2020 09:18:07 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.categories' doesn't exist
+May 27, 2020 09:30:15 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'field list'
+May 27, 2020 09:33:10 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'field list'
+May 27, 2020 09:33:14 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'field list'
+May 27, 2020 09:33:23 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'email' in 'field list'

@@ -1,7 +1,7 @@
 <?php 
 	class category extends database{
 		function __construct(){
-			$this->table = 'categories';
+			$this->table = 'category';
 			database::__construct();
 		}
 
@@ -11,10 +11,20 @@
 
 		public function getCategorybyId($category_id,$is_die=false){
 			$args = array(
-				'fields' => "categoryname, email,password",
 				'where' => array(
 						'or' => array(
 							'id' => $category_id,
+						)
+					)
+			);
+			return $this->getData($args,$is_die);
+		}
+
+		public function getAllCategory($is_die=false){
+			$args = array(
+				'where' => array(
+						'or' => array(
+							'status' => 'Active',
 						)
 					)
 			);
