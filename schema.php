@@ -55,6 +55,33 @@
 					updated_date datetime on update current_timestamp
 				)
 		",
+		'Advertisement' => "
+			CREATE TABLE IF NOT EXISTS advertisement
+				(
+					id int not null AUTO_INCREMENT PRIMARY KEY,
+					vendor_name varchar(30),
+					url varchar(50),
+					adType enum('widead','simplead') default 'simplead',
+					image varchar(50),
+					status enum('Active','Passive') default 'Active',
+					added_by int,
+					created_date datetime default current_timestamp,
+					updated_date datetime on update current_timestamp
+				)
+		",
+		'Info' => "
+			CREATE TABLE IF NOT EXISTS info
+				(
+					id int not null AUTO_INCREMENT PRIMARY KEY,
+					icon_name varchar(30),
+					url varchar(50),
+					class varchar(30),
+					status enum('Active','Passive') default 'Active',
+					added_by int,
+					created_date datetime default current_timestamp,
+					updated_date datetime on update current_timestamp
+				)
+		",
 		);
 
 	foreach ($table as $key => $sql) {

@@ -16,6 +16,16 @@
           <li><a href="./addblog.php"><i class="fa fa-edit"></i> Add Blog</a></li>
         </ul>
       </li>
+      <li><a><i class="fa fa-edit"></i> Advertisements <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="./ads.php"><i class="fa fa-edit"></i>Ads</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-edit"></i>Info Icons <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="./info.php"><i class="fa fa-edit"></i>Info</a></li>
+        </ul>
+      </li>
       <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="general_elements.html">General Elements</a></li>

@@ -2,7 +2,7 @@
 	include $_SERVER['DOCUMENT_ROOT'].'config/init.php';
 	$Blog = new blog();
 	// debugger($_POST);
-	// debugger($_FILES,true);
+	debugger($_FILES,true);
 	if ($_POST) {
 		$data = array(
 				'title'=>sanitize($_POST['title']),

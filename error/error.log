@@ -36,3 +36,8 @@ May 28, 2020 09:27:41 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 U
 May 28, 2020 09:28:05 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categoryid' in 'field list'
 May 28, 2020 09:28:34 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'categoryid' in 'field list'
 May 28, 2020 09:30:32 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 28, 2020 09:51:49 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 28, 2020 10:15:40 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 28, 2020 10:16:15 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 28, 2020 10:42:36 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 28, 2020 10:42:55 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
