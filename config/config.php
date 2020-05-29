@@ -15,14 +15,14 @@
 		define('DB_NAME', 'khwopa');
 		define('DB_USER', 'root');
 		define('DB_PASS', '');
-		define('SITE_URL', 'http://www.magazine.com/');
+		define('SITE_URL', 'http://magazine.com/');
 	}else{
 		error_reporting(0);
 		define('DB_HOST', 'localhost');
 		define('DB_NAME', 'magazine');
 		define('DB_USER', 'root');
 		define('DB_PASS', '');
-		define('SITE_URL', 'http://www.magazine.com/');
+		define('SITE_URL', 'http://magazine.com/');
 	}
 
 	define('ERROR_PATH', $_SERVER['DOCUMENT_ROOT'].'error/');
