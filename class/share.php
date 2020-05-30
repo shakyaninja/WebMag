@@ -1,38 +1,38 @@
 <?php 
-	class category extends database{
+	class share extends database{
 		function __construct(){
-			$this->table = 'category';
+			$this->table = 'share';
 			database::__construct();
 		}
 
-		public function addCategory($data,$is_die=false){
+		public function addShare($data,$is_die=false){
 			return $this->addData($data,$is_die);
 		}
 
-		public function getCategorybyId($category_id,$is_die=false){
+		public function getSharebyId($share_id,$is_die=false){
 			$args = array(
 				'where' => array(
 						'or' => array(
-							'id' => $category_id,
+							'id' => $share_id,
 						)
 					)
 			);
 			return $this->getData($args,$is_die);
 		}
 
-		public function getAllCategory($is_die=false){
+		// running nested sql
+		public function getAllShare($is_die=false){
 			$args = array(
 				'where' => array(
 						'or' => array(
-							'status' => 'Active',
+							'status'=>'Active',
 						)
-					),
-					'order'=> 'ASC'
+					)
 			);
 			return $this->getData($args,$is_die);
 		}
 		
-		public function updateCategoryById($data,$id,$is_die=false){
+		public function updateShareById($data,$id,$is_die=false){
 			$args = array(
 				'where' => array(
 						'or' => array(
@@ -43,7 +43,7 @@
 			return $this->updateData($data,$args,$is_die);
 		}
 
-		public function deleteCategoryById($id,$is_die=false){
+		public function deleteShareById($id,$is_die=false){
 			$args = array(
 				'where' => array(
 						'or' => array(

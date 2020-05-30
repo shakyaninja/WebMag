@@ -2,7 +2,7 @@
 	include $_SERVER['DOCUMENT_ROOT'].'config/init.php';
 	$Blog = new blog();
 	// debugger($_POST);
-	debugger($_FILES,true);
+	debugger($_FILES);
 	if ($_POST) {
 		$data = array(
 				'title'=>sanitize($_POST['title']),
@@ -49,8 +49,9 @@
 			}
 		}else{
 			$success = $Blog->addBlog($data);
+			debugger($success);
 		}
-		if ($success) {
+		if ($success == 1) {
 			redirect('../blog','success','Blog '.$act.'ed Successfully');
 		}else{
 			// debugger($Blog,true);
@@ -87,7 +88,8 @@
 		}else{
 			redirect('../blog','error','ID is required');
 		}
-	}else{
+	}
+	else{
 		redirect('../addblog','error','Unauthorized Access');
 	}
 ?>

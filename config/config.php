@@ -15,7 +15,7 @@
 		define('DB_NAME', 'khwopa');
 		define('DB_USER', 'root');
 		define('DB_PASS', '');
-		define('SITE_URL', 'http://magazine.com/');
+		define('SITE_URL', 'http://magazine.com/'); //for the proper previewing of image we must use SITE_URL without 'www'
 	}else{
 		error_reporting(0);
 		define('DB_HOST', 'localhost');

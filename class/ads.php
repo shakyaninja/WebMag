@@ -31,6 +31,29 @@
 			);
 			return $this->getData($args,$is_die);
 		}
+
+		public function getAllSimpleAds($is_die=false){
+			$args = array(
+				'where' => array(
+						'and' => array(
+							'status'=>'Active',
+							'adType'=>'simplead'
+						)
+					)
+			);
+			return $this->getData($args,$is_die);
+		}
+		public function getAllWideAds($is_die=false){
+			$args = array(
+				'where' => array(
+						'and' => array(
+							'status'=>'Active',
+							'adType'=>'widead'
+						)
+					)
+			);
+			return $this->getData($args,$is_die);
+		}
 		
 		public function updateAdsById($data,$id,$is_die=false){
 			$args = array(
