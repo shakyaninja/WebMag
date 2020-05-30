@@ -12,7 +12,7 @@ define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
 
     <title>WebMag<?php echo (isset($header) && !empty($header)) ? ' | ' . $header : "" ?></title>
-
+    <link rel="shortcut icon" href="cms/favicon.ico" type="image/x-icon">
     <!-- Google font -->
     <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:700%7CNunito:300,600" rel="stylesheet">
 
@@ -60,7 +60,7 @@ define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
                         if ($categories) {
                             foreach ($categories as $key => $category) {
                         ?>
-                                <li class="<?php echo CAT_COLOR[$category->id%4] ?>"><a href="category.php?id=<?php echo $category->id ?>"><?php echo $category->categoryname ?></a></li>
+                                <li class="<?php echo CAT_COLOR[$category->id % 4] ?>"><a href="category.php?id=<?php echo $category->id ?>"><?php echo $category->categoryname ?></a></li>
                         <?php
                             }
                         }
@@ -104,7 +104,7 @@ define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
                     <h3>Recent Posts</h3>
                     <?php
                     $Blog = new blog();
-                    $recentBlogs = $Blog->getAllRecentBlogWithLimit( 0, 3);
+                    $recentBlogs = $Blog->getAllRecentBlogWithLimit(0, 3);
                     // debugger($recentBlogs,true);
                     if (isset($recentBlogs) && !empty($recentBlogs)) {
                         foreach ($recentBlogs as $key => $recentBlog) {
@@ -115,9 +115,9 @@ define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
                             }
                     ?>
                             <div class="post post-widget">
-                                <a class="post-img" href="blog-post?id=<?php echo $recentBlog->id ?>"><img src="<?php echo $thumbnail?>" alt="..."></a>
+                                <a class="post-img" href="blog-post?id=<?php echo $recentBlog->id ?>"><img src="<?php echo $thumbnail ?>" alt="..."></a>
                                 <div class="post-body">
-                                    <h3 class="post-title"><a href="blog-post?id=<?php echo $recentBlog->id ?>"><?php echo $recentBlog->title?></a></h3>
+                                    <h3 class="post-title"><a href="blog-post?id=<?php echo $recentBlog->id ?>"><?php echo $recentBlog->title ?></a></h3>
                                 </div>
                             </div>
                     <?php
@@ -168,6 +168,30 @@ define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
                                 <li><?php echo isset($bread) && !empty($bread) ? $bread : "" ?></li>
                             </ul>
                             <h1><?php echo isset($bread) && !empty($bread) ? $bread : "" ?></h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php
+        } else if (isset($blog_info) && !empty($blog_info)) {
+            // debugger($blog_info,true);
+            $category = $Category->getCategorybyId($blog_info[0]->categoryid);
+            if (isset($blog_info[0]->image) && !empty($blog_info[0]->image) && file_exists(UPLOAD_PATH . 'blog/' . $blog_info[0]->image)) {
+                $thumbnail = UPLOAD_URL . 'blog/' . $blog_info[0]->image;
+            } else {
+                $thumbnail = UPLOAD_URL . 'noimg.jpg';
+            }
+        ?>
+            <div id="post-header" class="page-header">
+                <div class="background-img" style="background: url('<?php echo $thumbnail ?>') fixed ; background-size:cover;"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <div class="post-meta">
+                                <a class="post-category <?php echo CAT_COLOR[$blog_info[0]->categoryid%4] ?>" href="category?id=<?php echo $blog_info[0]->categoryid?>"><?php echo $category[0]->categoryname ?></a>
+                                <span class="post-date"><?php echo date("M d, Y", strtotime($blog_info[0]->created_date)); ?></span>
+                            </div>
+                            <h1><?php echo $blog_info[0]->title?></h1>
                         </div>
                     </div>
                 </div>

@@ -155,6 +155,7 @@
 			);
 			return $this->getData($args,$is_die);
 		}
+		
 		public function getAllPopularBlogByCategoryWithLimit($cat_id,$offset,$no_of_data,$is_die=false){
 			$args = array(
 				'fields' => ['id',

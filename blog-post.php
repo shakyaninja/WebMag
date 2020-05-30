@@ -1,17 +1,23 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . 'config/init.php';
-if(isset($_GET)&&!empty($_GET)){
-	$blog_id = (int)$_GET['id']; 
-	if($blog_id){
+if (isset($_GET) && !empty($_GET)) {
+	$blog_id = (int) $_GET['id'];
+	if ($blog_id) {
 		$Blog = new blog();
 		$blog_info = $Blog->getBlogbyId($blog_id);
+		if ($blog_info) {
+			$bread = $blog_info[0]->title;
+		} else {
+			redirect('index');
+		}
 		// $bread = $blog_info[0]->title;
 		// $blog_info[0]->view = (int)($blog_info[0]->view) + 1;
 		// $success = $Blog->updateBlogById($blog_info,$blog_info[0]->id);
 		// debugger($blog_info,true);
+	} else {
+		redirect('index');
 	}
-}
-else{
+} else {
 	redirect('index');
 }
 include 'inc/header.php';
@@ -29,17 +35,17 @@ include 'inc/header.php';
 				<div class="section-row sticky-container">
 					<div class="main-post">
 						<h3><?php echo $blog_info[0]->title ?></h3>
-						<p><?php echo html_entity_decode($blog_info[0]->content)?></p>
+						<p><?php echo html_entity_decode($blog_info[0]->content) ?></p>
 						<figure class="figure-img">
 							<?php
-								if (isset($blog_info[0]->image) && !empty($blog_info[0]->image) && file_exists(UPLOAD_PATH . 'blog/' . $blog_info[0]->image)) {
-									$thumbnail = UPLOAD_URL . 'blog/' . $blog_info[0]->image;
-								} else {
-									$thumbnail = UPLOAD_URL . 'noimg.jpg';
-								}
+							if (isset($blog_info[0]->image) && !empty($blog_info[0]->image) && file_exists(UPLOAD_PATH . 'blog/' . $blog_info[0]->image)) {
+								$thumbnail = UPLOAD_URL . 'blog/' . $blog_info[0]->image;
+							} else {
+								$thumbnail = UPLOAD_URL . 'noimg.jpg';
+							}
 							?>
-							<img class="img-responsive" src="<?php echo $thumbnail?>" alt="">
-							<figcaption>So Lorem Ipsum is bad (not necessarily)</figcaption>
+							<img class="img-responsive" src="<?php echo $thumbnail ?>" alt="">
+							<figcaption></figcaption>
 						</figure>
 					</div>
 					<div class="post-shares sticky-shares">
@@ -82,7 +88,7 @@ include 'inc/header.php';
 				<!-- ad -->
 
 				<!-- author -->
-				<div class="section-row">
+				<!-- <div class="section-row">
 					<div class="post-author">
 						<div class="media">
 							<div class="media-left">
@@ -102,29 +108,26 @@ include 'inc/header.php';
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!-- /author -->
 
 				<!-- comments -->
 				<div class="section-row">
 					<div class="section-title">
-						<h2>3 Comments</h2>
+						<?php
+						$Comment = new comment();
+						$Count = $Comment->getNumberCommentByBlog($blog_id); 
+						?>
+						<h2><?php echo $Count[0]->total?> Comments</h2>
 					</div>
-
 					<div class="post-comments">
-						<!-- comment -->
-						<div class="media">
-							<div class="media-left">
-								<img class="media-object" src="./assets/img/avatar.png" alt="">
-							</div>
-							<div class="media-body">
-								<div class="media-heading">
-									<h4>John Doe</h4>
-									<span class="time">March 27, 2018 at 8:00 am</span>
-									<a href="#" class="reply">Reply</a>
-								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 
+						<?php
+
+						$comments = $Comment->getAllAcceptCommentbyBlogId($blog_id);
+						if ($comments) {
+							foreach ($comments as $key => $comment) {
+						?>
 								<!-- comment -->
 								<div class="media">
 									<div class="media-left">
@@ -132,44 +135,55 @@ include 'inc/header.php';
 									</div>
 									<div class="media-body">
 										<div class="media-heading">
-											<h4>John Doe</h4>
-											<span class="time">March 27, 2018 at 8:00 am</span>
-											<a href="#" class="reply">Reply</a>
+											<h4><?php echo $comment->name ?></h4>
+											<span class="time"><?php echo date(" M d, Y h:i a", strtotime($comment->created_date)) ?></span>
+											<a href="#Replyform" class="reply" onclick="comment(this)" data-commentID="<?php echo $comment->id?>">Reply</a>
 										</div>
-										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+										<p><?php echo $comment->message ?></p>
+
+										<?php
+										$replies = $Comment->getAllAcceptReplybyCommentID($comment->id);
+										// debugger($replies,true);
+										if ($replies) {
+											foreach ($replies as $key => $reply) {
+										?>
+												<!-- comment -->
+												<div class="media">
+													<div class="media-left">
+														<img class="media-object" src="./assets/img/avatar.png" alt="">
+													</div>
+													<div class="media-body">
+														<div class="media-heading">
+															<h4><?php echo $reply->name ?></h4>
+															<span class="time"><?php echo date(" M d, Y h:i a", strtotime($reply->created_date)) ?></span>
+															<a href="#Replyform" class="reply" onclick="comment(this)" data-commentID="<?php echo $comment->id?>">Reply</a>
+														</div>
+														<p><?php echo $reply->message ?></p>
+													</div>
+												</div>
+												<!-- /comment -->
+										<?php
+											}
+										}
+										?>
 									</div>
 								</div>
 								<!-- /comment -->
-							</div>
-						</div>
-						<!-- /comment -->
-
-						<!-- comment -->
-						<div class="media">
-							<div class="media-left">
-								<img class="media-object" src="./assets/img/avatar.png" alt="">
-							</div>
-							<div class="media-body">
-								<div class="media-heading">
-									<h4>John Doe</h4>
-									<span class="time">March 27, 2018 at 8:00 am</span>
-									<a href="#" class="reply">Reply</a>
-								</div>
-								<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-							</div>
-						</div>
-						<!-- /comment -->
+						<?php
+							}
+						}
+						?>
 					</div>
 				</div>
 				<!-- /comments -->
 
 				<!-- reply -->
 				<div class="section-row">
-					<div class="section-title">
+					<div class="section-title" id="Replyform">
 						<h2>Leave a reply</h2>
 						<p>your email address will not be published. required fields are marked *</p>
 					</div>
-					<form class="post-reply">
+					<form class="post-reply" action="process/comment" method="post">
 						<div class="row">
 							<div class="col-md-4">
 								<div class="form-group">
@@ -193,6 +207,8 @@ include 'inc/header.php';
 								<div class="form-group">
 									<textarea class="input" name="message" placeholder="Message"></textarea>
 								</div>
+								<input type="hidden" name="commentid" id="comment_id" value="">
+								<input type="hidden" name="blogid" value="<?php echo $blog_id ?>">
 								<button class="primary-button">Submit</button>
 							</div>
 						</div>
@@ -229,7 +245,7 @@ include 'inc/header.php';
 				<!-- /ad -->
 				<!-- most read -->
 				<?php
-				$popularBlogs = $Blog->getAllPopularBlogWithLimit( 0, 4);
+				$popularBlogs = $Blog->getAllPopularBlogWithLimit(0, 4);
 				?>
 				<!-- post widget -->
 				<div class="aside-widget">
@@ -246,9 +262,9 @@ include 'inc/header.php';
 							}
 					?>
 							<div class="post post-widget">
-								<a class="post-img" href="blog-post?id=<?php echo $popuarBlog->id ?>"><img src="<?php echo $thumbnail?>" alt="..."></a>
+								<a class="post-img" href="blog-post?id=<?php echo $popuarBlog->id ?>"><img src="<?php echo $thumbnail ?>" alt="..."></a>
 								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post?id=<?php echo $popuarBlog->id ?>"><?php echo $popuarBlog->title?></a></h3>
+									<h3 class="post-title"><a href="blog-post?id=<?php echo $popuarBlog->id ?>"><?php echo $popuarBlog->title ?></a></h3>
 								</div>
 							</div>
 					<?php
@@ -278,7 +294,7 @@ include 'inc/header.php';
 								<a class="post-img" href="blog-post?id=<?php echo $featuredBlog->id ?>"><img src="<?php echo $thumbnail ?>" alt=""></a>
 								<div class="post-body">
 									<div class="post-meta">
-										<a class="post-category <?php echo CAT_COLOR[$featuredBlog->categoryid%4] ?>" href="#"><?php echo $featuredBlog->Category?></a>
+										<a class="post-category <?php echo CAT_COLOR[$featuredBlog->categoryid % 4] ?>" href="#"><?php echo $featuredBlog->Category ?></a>
 										<span class="post-date"><?php echo date("M d, Y", strtotime($featuredBlog->created_date)); ?></span>
 									</div>
 									<h3 class="post-title"><a href="blog-post?id=<?php echo $featuredBlog->id ?>"><?php echo $featuredBlog->title ?></a></h3>
@@ -363,3 +379,22 @@ include 'inc/header.php';
 <?php
 include 'inc/footer.php';
 ?>
+<script>
+	// $("#Replyform a").on('click', function(event) {
+	// 	var hash = this.hash;
+	// 	if (hash) {
+	// 		event.preventDefault();
+	// 		$('html, body').animate({
+	// 			scrollTop: $(hash).offset().top
+	// 		}, 900, function() {
+	// 			window.location.hash = hash;
+	// 		});
+	// 	}
+	// });
+		var comment = (id)=>{
+			var id = $(id).data();
+			console.log(id.commentid);
+			$('#comment_id').val(id.commentid);
+		}
+	$('blockquote').addClass('blockquote');
+</script>

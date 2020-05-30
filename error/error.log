@@ -46,3 +46,23 @@ May 30, 2020 08:10:51 am : (run Query database) : SQLSTATE[23000]: Integrity con
 May 30, 2020 09:26:28 am : (addData) : SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1
 May 30, 2020 09:33:15 am : (addData) : SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1
 May 30, 2020 09:33:44 am : (addData) : SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1
+May 30, 2020 09:14:23 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 30, 2020 09:14:23 pm : (run Query database) : SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''comment',
+					commentid int,
+					blogid int,
+					state enum('waiting','accep' at line 8
+May 30, 2020 09:15:01 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 30, 2020 09:15:01 pm : (run Query database) : SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''comment',
+					commentid int,
+					blogid int,
+					state enum('waiting','accep' at line 8
+May 30, 2020 09:16:32 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 30, 2020 09:16:32 pm : (run Query database) : SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''comment',
+					commentid int,
+					blogid int,
+					state enum('waiting','accep' at line 8
+May 30, 2020 09:20:06 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 30, 2020 09:57:33 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.comment' doesn't exist
+May 30, 2020 10:02:13 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.comment' doesn't exist
+May 30, 2020 10:09:01 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.comment' doesn't exist
+May 30, 2020 10:09:33 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.comment' doesn't exist
