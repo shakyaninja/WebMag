@@ -6,6 +6,9 @@ if(isset($_GET)&&!empty($_GET)){
 		$Blog = new blog();
 		$blog_info = $Blog->getBlogbyId($blog_id);
 		// $bread = $blog_info[0]->title;
+		// $blog_info[0]->view = (int)($blog_info[0]->view) + 1;
+		// $success = $Blog->updateBlogById($blog_info,$blog_info[0]->id);
+		// debugger($blog_info,true);
 	}
 }
 else{

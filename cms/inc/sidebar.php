@@ -5,30 +5,30 @@
     <ul class="nav side-menu">
       <li><a href="./index.php"><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
       </li>
-      <li><a><i class="fa fa-edit"></i> Category <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-bars"></i> Category <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="./category.php"><i class="fa fa-edit"></i> Category</a></li>
+          <li><a href="./category.php"><i class="fa fa-bars"></i> Category</a></li>
         </ul>
       </li>
       <li><a><i class="fa fa-edit"></i> Blog <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="./blog.php"><i class="fa fa-edit"></i> Blog List </a></li>
-          <li><a href="./addblog.php"><i class="fa fa-edit"></i> Add Blog</a></li>
+          <li><a href="./blog.php"><i class="fa fa-bars"></i> Blog List </a></li>
+          <li><a href="./addblog.php"><i class="fa fa-plus"></i> Add Blog</a></li>
         </ul>
       </li>
-      <li><a><i class="fa fa-edit"></i> Advertisements <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-eye"></i> Advertisements <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="./ads.php"><i class="fa fa-edit"></i>Ads</a></li>
+          <li><a href="./ads.php"><i class="fa fa-eye"></i>Ads</a></li>
         </ul>
       </li>
-      <li><a><i class="fa fa-edit"></i>Info Icons <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-info"></i>Info Icons <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="./info.php"><i class="fa fa-edit"></i>Info</a></li>
+          <li><a href="./info.php"><i class="fa fa-info"></i>Info</a></li>
         </ul>
       </li>
-      <li><a><i class="fa fa-edit"></i>Share Icons <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-share"></i>Share Icons <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="./share.php"><i class="fa fa-edit"></i>Share Icons</a></li>
+          <li><a href="./share.php"><i class="fa fa-share"></i>Share Icons</a></li>
         </ul>
       </li>
       <!-- <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>

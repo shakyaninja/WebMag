@@ -43,3 +43,6 @@ May 28, 2020 10:42:36 pm : (run Query database) : SQLSTATE[23000]: Integrity con
 May 28, 2020 10:42:55 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
 May 30, 2020 08:09:55 am : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.share' doesn't exist
 May 30, 2020 08:10:51 am : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 30, 2020 09:26:28 am : (addData) : SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1
+May 30, 2020 09:33:15 am : (addData) : SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1
+May 30, 2020 09:33:44 am : (addData) : SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1
