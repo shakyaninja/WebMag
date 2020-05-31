@@ -977,3 +977,7 @@ RESPONSIVE
          display:none;
     }
 }
+
+.red-text{
+    color: red;
+}

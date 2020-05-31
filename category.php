@@ -1,5 +1,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . 'config/init.php';
+$header = "Category";
 if (isset($_GET) && !empty($_GET)) {
 	$cat_id = (int) $_GET['id'];
 	if ($cat_id) {
@@ -215,9 +216,9 @@ include 'inc/header.php';
 							}
 					?>
 							<div class="post post-widget">
-								<a class="post-img" href="blog-post?id=<?php echo $popuarBlog->id ?>"><img src="<?php echo $thumbnail?>" alt="..."></a>
+								<a class="post-img" href="blog-post?id=<?php echo $popuarBlog->id ?>"><img src="<?php echo $thumbnail ?>" alt="..."></a>
 								<div class="post-body">
-									<h3 class="post-title"><a href="blog-post?id=<?php echo $popuarBlog->id ?>"><?php echo $popuarBlog->title?></a></h3>
+									<h3 class="post-title"><a href="blog-post?id=<?php echo $popuarBlog->id ?>"><?php echo $popuarBlog->title ?></a></h3>
 								</div>
 							</div>
 					<?php
@@ -230,26 +231,26 @@ include 'inc/header.php';
 				<!-- catagories -->
 				<div class="aside-widget">
 					<div class="section-title">
-						<h2>Catagories</h2>
+						<h2>Categories</h2>
 					</div>
 					<div class="category-widget">
 						<ul>
 							<?php
-								$Category = new category();
-								$categories = $Category->getAllCategory();
-								if($categories){
-									foreach ($categories as $key => $category) {
-										// debugger($category,true);
-										?>
-											<li><a href="category?id=<?php echo $category->id?>" class="<?php echo CAT_COLOR[$category->id]?>"><?php echo $category->categoryname?><span>
+							$Category = new category();
+							$categories = $Category->getAllCategory();
+							if ($categories) {
+								foreach ($categories as $key => $category) {
+									// debugger($category,true);
+							?>
+									<li><a href="category?id=<?php echo $category->id ?>" class="<?php echo CAT_COLOR[$category->id] ?>"><?php echo $category->categoryname ?><span>
 												<?php
-													$Count = $Blog->getNumberBlogByCategory($category->id);
-													echo $Count[0]->total;
+												$Count = $Blog->getNumberBlogByCategory($category->id);
+												echo $Count[0]->total;
 												?>
 											</span></a></li>
-										<?php
-									}
+							<?php
 								}
+							}
 							?>
 						</ul>
 					</div>
@@ -281,9 +282,18 @@ include 'inc/header.php';
 					</div>
 					<div class="archive-widget">
 						<ul>
-							<li><a href="#">Jan 2018</a></li>
-							<li><a href="#">Feb 2018</a></li>
-							<li><a href="#">Mar 2018</a></li>
+							<?php
+							$Archive = new archive();
+							$archives = $Archive->getAllArchive();
+							// debugger($archives,true);
+							if ($archives) {
+								foreach ($archives as $key => $archive) {
+							?>
+									<li><a href="archive?id=<?php echo $archive->id?>"><?php echo date("M d,Y",strtotime($archive->date));?></a></li>
+							<?php 
+								}
+							}
+							?>
 						</ul>
 					</div>
 				</div>

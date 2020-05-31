@@ -66,3 +66,7 @@ May 30, 2020 09:57:33 pm : (addData) : SQLSTATE[42S02]: Base table or view not f
 May 30, 2020 10:02:13 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.comment' doesn't exist
 May 30, 2020 10:09:01 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.comment' doesn't exist
 May 30, 2020 10:09:33 pm : (addData) : SQLSTATE[42S02]: Base table or view not found: 1146 Table 'khwopa.comment' doesn't exist
+May 31, 2020 02:36:13 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'
+May 31, 2020 02:44:30 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'archivename' in 'field list'
+May 31, 2020 02:46:46 pm : (addData) : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'archivename' in 'field list'
+May 31, 2020 02:53:35 pm : (run Query database) : SQLSTATE[23000]: Integrity constraint violation: 1062 Duplicate entry 'admin@magazine.com' for key 'email'

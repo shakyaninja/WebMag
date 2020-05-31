@@ -76,12 +76,13 @@ define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
                     <div class="nav-btns">
                         <button class="aside-btn"><i class="fa fa-bars"></i></button>
                         <button class="search-btn"><i class="fa fa-search"></i></button>
-                        <div class="search-form">
+                        <form class="search-form" action="search" method="get">
                             <input class="search-input" type="text" name="search" placeholder="Enter Your Search ...">
                             <button class="search-close"><i class="fa fa-times"></i></button>
-                        </div>
+                        </form>
                     </div>
                     <!-- /search & aside toggle -->
+
                 </div>
             </div>
             <!-- /Main Nav -->
@@ -188,10 +189,10 @@ define('CAT_COLOR', ['cat-1', 'cat-2', 'cat-3', 'cat-4']);
                     <div class="row">
                         <div class="col-md-10">
                             <div class="post-meta">
-                                <a class="post-category <?php echo CAT_COLOR[$blog_info[0]->categoryid%4] ?>" href="category?id=<?php echo $blog_info[0]->categoryid?>"><?php echo $category[0]->categoryname ?></a>
+                                <a class="post-category <?php echo CAT_COLOR[$blog_info[0]->categoryid % 4] ?>" href="category?id=<?php echo $blog_info[0]->categoryid ?>"><?php echo $category[0]->categoryname ?></a>
                                 <span class="post-date"><?php echo date("M d, Y", strtotime($blog_info[0]->created_date)); ?></span>
                             </div>
-                            <h1><?php echo $blog_info[0]->title?></h1>
+                            <h1><?php echo $blog_info[0]->title ?></h1>
                         </div>
                     </div>
                 </div>

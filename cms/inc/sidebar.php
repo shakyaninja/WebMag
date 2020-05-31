@@ -31,6 +31,16 @@
           <li><a href="./share.php"><i class="fa fa-share"></i>Share Icons</a></li>
         </ul>
       </li>
+      <li><a><i class="fa fa-share"></i>Comments <span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="./comment.php"><i class="fa fa-share"></i>Comments</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-share"></i>Archive<span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="./archive.php"><i class="fa fa-share"></i>Archive</a></li>
+        </ul>
+      </li>
       <!-- <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
           <li><a href="general_elements.html">General Elements</a></li>

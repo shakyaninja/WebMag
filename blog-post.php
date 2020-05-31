@@ -1,5 +1,6 @@
 <?php
 include $_SERVER['DOCUMENT_ROOT'] . 'config/init.php';
+$header = "Blogs";
 if (isset($_GET) && !empty($_GET)) {
 	$blog_id = (int) $_GET['id'];
 	if ($blog_id) {
@@ -7,6 +8,10 @@ if (isset($_GET) && !empty($_GET)) {
 		$blog_info = $Blog->getBlogbyId($blog_id);
 		if ($blog_info) {
 			$bread = $blog_info[0]->title;
+			$data = array(
+				'view'=> $blog_info[0]->view+1
+			);
+			$Blog->updateBlogById($data,$blog_id);
 		} else {
 			redirect('index');
 		}
@@ -246,6 +251,7 @@ include 'inc/header.php';
 				<!-- most read -->
 				<?php
 				$popularBlogs = $Blog->getAllPopularBlogWithLimit(0, 4);
+				// debugger($popularBlogs,true);
 				?>
 				<!-- post widget -->
 				<div class="aside-widget">

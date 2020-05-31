@@ -41,6 +41,38 @@
 			return $this->getData($args,$is_die);
 		}
 
+		public function getAllBlogByDate($date,$is_die=false){
+			$args = array(
+				'fields' => ['id',
+					            'title',
+					            'content',
+					            'featured',
+					            'categoryid',
+					            '(SELECT categoryname from category where id = categoryid) as Category',
+					            'view',
+					            'image'],
+					            
+				'where' => " where created_date LIKE '".$date."%'"
+			);
+			return $this->getData($args,$is_die);
+		}
+
+		public function getAllBlogSearch($data,$is_die=false){
+			$args = array(
+				'fields' => ['id',
+					            'title',
+					            'content',
+					            'featured',
+					            'categoryid',
+					            '(SELECT categoryname from category where id = categoryid) as Category',
+					            'view',
+					            'image'],
+					            
+				'where' => " where title or content LIKE '%".$data."%'"
+			);
+			return $this->getData($args,$is_die);
+		}
+
 		public function getAllFeaturedBlogByCategoryWithLimit($cat_id,$offset,$no_of_data,$is_die=false){
 			$args = array(
 				'fields' => ['id',
@@ -155,7 +187,21 @@
 			);
 			return $this->getData($args,$is_die);
 		}
+
+		public function getNumberBlog($is_die=false){
+			$args = array(
+				'fields' => ['COUNT(id) as total'],
+				'where' => array(
+						'and' => array(
+							'status'=>'Active',
+						)
+					)
+			);
+			return $this->getData($args,$is_die);
+		}
 		
+
+
 		public function getAllPopularBlogByCategoryWithLimit($cat_id,$offset,$no_of_data,$is_die=false){
 			$args = array(
 				'fields' => ['id',
