@@ -60,16 +60,23 @@
 				<div class="footer-widget">
 					<h3 class="footer-title">Join our Newsletter</h3>
 					<div class="footer-newsletter">
-						<form>
-							<input class="input" type="email" name="newsletter" placeholder="Enter your email">
-							<button class="newsletter-btn"><i class="fa fa-paper-plane"></i></button>
+						<form action="process/join" method="post">
+							<input class="input" type="email" name="email" placeholder="Enter your email">
+							<button class="newsletter-btn" type="submit"><i class="fa fa-paper-plane"></i></button>
 						</form>
 					</div>
 					<ul class="footer-social">
-						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
-						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
-						<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-						<li><a href="#"><i class="fa fa-pinterest"></i></a></li>
+						<?php
+						$Icon = new info();
+						$icons = $Icon->getAllInfo();
+						if ($icons) {
+							foreach ($icons as $key => $icon) {
+						?>
+								<li><a href="<?php echo $icon->url?>"><i class="<?php echo $icon->class?>"></i></a></li>
+						<?php
+							}
+						}
+						?>
 					</ul>
 				</div>
 			</div>

@@ -300,7 +300,7 @@ include 'inc/header.php';
 								<a class="post-img" href="blog-post?id=<?php echo $featuredBlog->id ?>"><img src="<?php echo $thumbnail ?>" alt=""></a>
 								<div class="post-body">
 									<div class="post-meta">
-										<a class="post-category <?php echo CAT_COLOR[$featuredBlog->categoryid % 4] ?>" href="#"><?php echo $featuredBlog->Category ?></a>
+										<a class="post-category <?php echo CAT_COLOR[$featuredBlog->categoryid % 4] ?>" href="category?id=<?php echo $featuredBlog->categoryid?>"><?php echo $featuredBlog->Category ?></a>
 										<span class="post-date"><?php echo date("M d, Y", strtotime($featuredBlog->created_date)); ?></span>
 									</div>
 									<h3 class="post-title"><a href="blog-post?id=<?php echo $featuredBlog->id ?>"><?php echo $featuredBlog->title ?></a></h3>
