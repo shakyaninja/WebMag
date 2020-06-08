@@ -3,7 +3,7 @@
   <div class="menu_section">
     <h3>General</h3>
     <ul class="nav side-menu">
-      <li><a href="./index.php"><i class="fa fa-home"></i> Dashboard <span class="fa fa-chevron-down"></span></a>
+      <li><a href="./index.php"><i class="fa fa-home"></i> Dashboard </a>
       </li>
       <li><a><i class="fa fa-bars"></i> Category <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
@@ -31,14 +31,29 @@
           <li><a href="./share.php"><i class="fa fa-share"></i>Share Icons</a></li>
         </ul>
       </li>
-      <li><a><i class="fa fa-share"></i>Comments <span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-comments"></i>Comments <span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="./comment.php"><i class="fa fa-share"></i>Comments</a></li>
+          <li><a href="./comment.php"><i class="fa fa-comments"></i>Comments</a></li>
         </ul>
       </li>
-      <li><a><i class="fa fa-share"></i>Archive<span class="fa fa-chevron-down"></span></a>
+      <li><a><i class="fa fa-folder"></i>Archive<span class="fa fa-chevron-down"></span></a>
         <ul class="nav child_menu">
-          <li><a href="./archive.php"><i class="fa fa-share"></i>Archive</a></li>
+          <li><a href="./archive.php"><i class="fa fa-folder-open"></i>Archive</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-users"></i>Subscribers<span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="./subscribers.php"><i class="fa fa-user"></i>Subscribers</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-phone"></i>Contacts<span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="./contacts.php"><i class="fa fa-phone"></i>Contacts</a></li>
+        </ul>
+      </li>
+      <li><a><i class="fa fa-pencil"></i>Tags<span class="fa fa-chevron-down"></span></a>
+        <ul class="nav child_menu">
+          <li><a href="./tag.php"><i class="fa fa-pencil"></i>Tags</a></li>
         </ul>
       </li>
       <!-- <li><a><i class="fa fa-desktop"></i> UI Elements <span class="fa fa-chevron-down"></span></a>

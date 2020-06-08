@@ -1,5 +1,5 @@
 <?php
-$header = "Share Icons";
+$header = "Tags";
 include 'inc/header.php'; ?>
 <?php include 'inc/checklogin.php'; ?>
 
@@ -9,7 +9,7 @@ include 'inc/header.php'; ?>
         <?php flashMessage(); ?>
         <div class="page-title">
             <div class="title_left">
-                <h3>Share Icons</h3>
+                <h3>Tags</h3>
             </div>
 
             <!-- <div class="title_right">
@@ -30,9 +30,9 @@ include 'inc/header.php'; ?>
             <div class="col-md-12 col-sm-12 col-xs-12">
                 <div class="x_panel">
                     <div class="x_title">
-                        <h2>Share Icons</h2>
+                        <h2>Tags</h2>
                         <ul class="nav navbar-right panel_toolbox">
-                            <a href="javascript:;" class="btn btn-primary" onclick="addShareIcons();">Add icon</a>
+                            <a href="javascript:;" class="btn btn-primary" onclick="addTag();">Add Tag</a>
                         </ul>
                         <div class="clearfix">
                         </div>
@@ -41,29 +41,23 @@ include 'inc/header.php'; ?>
                         <table id="datatable" class="table table-striped table-bordered">
                             <thead>
                                 <th>S.N</th>
-                                <th>Share Icons</th>
-                                <th>URL</th>
-                                <th>Class</th>
-                                <th>Preview</th>
+                                <th>Tags name</th>
+                                <th>Added Date</th>
                                 <th>Actions</th>
                             </thead>
                             <tbody>
                                 <?php
-                                $Share = new share();
-                                $icons = $Share->getAllShare();
-                                foreach ($icons as $key => $icon) {
+                                $Tag = new tag();
+                                $tags = $Tag->getAllTag();
+                                foreach ($tags as $key => $tag) {
                                 ?>
                                     <tr>
                                         <td><?php echo ($key+1).'.'; ?></td>
-                                        <td><?php echo $icon->icon_name; ?></td>
-                                        <td><?php echo ($icon->url);?></td>
-                                        <td><?php echo ($icon->class);?></td>
-                                        <td><i class="<?php echo($icon->class) ?>"></i></td>
-                                        <td class="text-center">
-                                            <!-- data in HTML tags as attribute -->
-                                            <!-- for passing unique id we wil pass this as reference -->
-                                            <a class="btn btn-info" href="javascript:;" onclick="editShareIcons(this);" data-icon_share = '<?php echo(json_encode($icon)) ?>'><i class="fa fa-pencil-square-o"></i></a>
-                                            <a class="btn btn-danger" href="./process/icon?id=<?php echo( $icon->id)?>&amp;act=<?php echo(substr(md5("Delete-Share Icons-".$icon->id.$_SESSION['token']),5,15)) ?>" ><i class="fa fa-trash"></i></a>
+                                        <td><?php echo $tag->name; ?></td>
+                                        <td><?php echo ($tag->created_date);?></td>
+                                        <td>
+                                        <a class="btn btn-info" href="javascript:;" onclick="editTag(this);" data-tag_info = '<?php echo(json_encode($tag)) ?>'><i class="fa fa-pencil-square-o"></i></a>
+                                            <a class="btn btn-danger" href="./process/tag?id=<?php echo( $tag->id)?>&amp;act=<?php echo(substr(md5("Delete-Tag-".$tag->id.$_SESSION['token']),5,15)) ?>" ><i class="fa fa-trash"></i></a>
                                         </td>
                                     </tr>
                                 <?php
@@ -77,23 +71,14 @@ include 'inc/header.php'; ?>
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                        <h4 class="modal-title" id="title">Add Share Icons</h4>
+                                        <h4 class="modal-title" id="title">Add Tag</h4>
                                     </div>
-                                    <form action="./process/share" method="post">
+                                    <form action="./process/tag" method="post">
 
                                         <div class="modal-body">
                                             <div class="form-group">
-                                                <label for="icon_name">Share Icons Name</label>
-                                                <input type="text" id="icon_name" class="form-control" name="icon_name" placeholder="Share Icons Name">
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="class">Share Icons Class</label>
-                                                <input type="text" id="class" class="form-control" name="class" placeholder="Share Icons Class" >
-                                            </div>
-                                            <!-- <div><i class="<?php //echo 'fa'.$class ?>"></i></div> -->
-                                            <div class="form-group">
-                                                <label for="url">Share Icons URL</label>
-                                                <input type="text" id="shareurl" class="form-control" name="url" placeholder="Icon redirection URL">
+                                                <label for="name">Tag Name</label>
+                                                <input type="text" id="tagname" class="form-control" name="name" placeholder="Tag Name">
                                             </div>
                                         </div>
 
@@ -118,23 +103,21 @@ include 'inc/header.php'; ?>
 <?php include 'inc/footer.php'; ?>
 <script src="./assets/js/datatable.js"></script>
 <script type="text/javascript">
-    function addShareIcons() {
-        $('#title').html('Add Share Icons');
+    function addTag() {
+        $('#title').html('Add Tag');
         $('#id').removeAttr();
         showModal();
     }
-    function editShareIcons(element){
+    function editTag(element){
         $('#id').val()
-        var icon_share = $(element).data('icon_share'); //data from HTML to JS through tag attribute
-        if(typeof(icon_share) != 'object'){
-            icon_share = JSON.parse(icon_share);
+        var tag_info = $(element).data('tag_info'); //data from HTML to JS through tag attribute
+        if(typeof(tag_info) != 'object'){
+            tag_info = JSON.parse(tag_info);
         }        
-        $('#title').html('Edit Share Icons');
-        $('#icon_name').val(icon_share.icon_name);
-        $('#id').val(icon_share.id);
-        $('#class').val(icon_share.class);
-        $('#shareurl').val(icon_share.url);
-        showModal(icon_share.description);
+        $('#title').html('Edit Tag');
+        $('#tagname').val(tag_info.tagname);
+        $('#id').val(tag_info.id);
+        showModal();
     }
 
     function showModal(data = '') {

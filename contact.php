@@ -25,7 +25,7 @@
 					<div class="col-md-5 col-md-offset-1">
 						<div class="section-row">
 							<h3>Send A Message</h3>
-							<form>
+							<form action="process/contact.php" method="post">
 								<div class="row">
 									<div class="col-md-7">
 										<div class="form-group">
@@ -43,7 +43,7 @@
 										<div class="form-group">
 											<textarea class="input" name="message" placeholder="Message"></textarea>
 										</div>
-										<button class="primary-button">Submit</button>
+										<button class="primary-button" type="submit">Submit</button>
 									</div>
 								</div>
 							</form>

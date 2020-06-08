@@ -279,7 +279,7 @@ class blog extends database
 				)
 			),
 			'order' => array(
-				'columnname' => 'view',
+				'ref' => 'view',
 				'orderType' => 'DESC'
 			),
 			'limit' => array(

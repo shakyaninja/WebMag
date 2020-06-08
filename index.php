@@ -314,14 +314,14 @@ include 'inc/header.php';
 							<!-- post -->
 							<div class="col-md-12">
 								<div class="post post-row">
-									<a class="post-img" href="blog-post?id=<?php echo $popuarBlog->id ?>"><img src="<?php echo $thumbnail?>" alt=""></a>
+									<a class="post-img" href="blog-post?id=<?php echo $popuarBlog->id ?>"><img src="<?php echo $thumbnail ?>" alt=""></a>
 									<div class="post-body">
 										<div class="post-meta">
-											<a class="post-category <?php echo CAT_COLOR[$popuarBlog->categoryid % 4]?>" href="category?id=<?php echo $popuarBlog->categoryid?>"><?php echo $popuarBlog->Category?></a>
+											<a class="post-category <?php echo CAT_COLOR[$popuarBlog->categoryid % 4] ?>" href="category?id=<?php echo $popuarBlog->categoryid ?>"><?php echo $popuarBlog->Category ?></a>
 											<span class="post-date"><?php echo date("M d, Y", strtotime($popuarBlog->created_date)) ?></span>
 										</div>
 										<h3 class="post-title"><a href="blog-post?id=<?php echo $popuarBlog->id ?>"><?php echo $popuarBlog->title ?></a></h3>
-										<p><?php echo html_entity_decode($popuarBlog->content)?></p>
+										<p><?php echo html_entity_decode($popuarBlog->content) ?></p>
 									</div>
 								</div>
 							</div>
@@ -391,15 +391,18 @@ include 'inc/header.php';
 				<div class="aside-widget">
 					<div class="tags-widget">
 						<ul>
-							<li><a href="#">Chrome</a></li>
-							<li><a href="#">CSS</a></li>
-							<li><a href="#">Tutorial</a></li>
-							<li><a href="#">Backend</a></li>
-							<li><a href="#">JQuery</a></li>
-							<li><a href="#">Design</a></li>
-							<li><a href="#">Development</a></li>
-							<li><a href="#">JavaScript</a></li>
-							<li><a href="#">Website</a></li>
+							<!-- tags -->
+							<?php
+							$Tag = new tag();
+							$tags = $Tag->getAllTag();
+							if ($tags) {
+								foreach ($tags as $key => $tag) {
+							?>
+									<li><a href="search?search=<?php echo $tag->name ?>"><?php echo $tag->name ?></a></li>
+							<?php
+								}
+							}
+							?>
 						</ul>
 					</div>
 				</div>

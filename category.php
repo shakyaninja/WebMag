@@ -70,7 +70,7 @@ include 'inc/header.php';
 									$thumbnail = UPLOAD_URL . 'noimg.jpg';
 								}
 								?>
-								<a class="post-img" href="blog-post"><img src="<?php echo $thumbnail ?>" alt="..."></a>
+								<a class="post-img" href="blog-post.php?id=<?php echo $featuredBlog[1]->id ?>"><img src="<?php echo $thumbnail ?>" alt="..."></a>
 								<div class="post-body">
 									<div class="post-meta">
 										<a class="post-category <?php echo CAT_COLOR[$cat_id % 4] ?>" href="#"><?php echo $bread ?></a>
@@ -92,7 +92,7 @@ include 'inc/header.php';
 									$thumbnail = UPLOAD_URL . 'noimg.jpg';
 								}
 								?>
-								<a class="post-img" href="blog-post"><img src="<?php echo $thumbnail ?>" alt="..."></a>
+								<a class="post-img" href="blog-post.php?id=<?php echo $featuredBlog[2]->id ?>"><img src="<?php echo $thumbnail ?>" alt="..."></a>
 								<div class="post-body">
 									<div class="post-meta">
 										<a class="post-category <?php echo CAT_COLOR[$cat_id] ?>" href="#"><?php echo $bread; ?></a>
@@ -180,7 +180,7 @@ include 'inc/header.php';
 				if (isset($ads[0]) && !empty($ads[0])) {
 				?>
 					<div class="aside-widget text-center">
-						<a href="<?php $ads[0]->url ?>" style="display: inline-block;margin: auto;">
+						<a href="<?php echo $ads[0]->url ?>" style="display: inline-block;margin: auto;">
 							<?php
 							if (isset($ads[0]->image) && !empty($ads[0]->image) && file_exists(UPLOAD_PATH . 'ads/' . $ads[0]->image)) {
 								$thumbnail = UPLOAD_URL . 'ads/' . $ads[0]->image;
